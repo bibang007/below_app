@@ -13,7 +13,7 @@ export const loginUser = (loginData) => {
       .catch(e => e)
   }
   
-  export const registerUser = (registerData) => {
+export const registerUser = (registerData) => {
     const opts = {
       method: 'POST',
       body: JSON.stringify({ user: registerData }),
