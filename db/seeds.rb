@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Post.create!(category: 'services', name: 'Ding massages', image:'https://imgur.com/gallery/4od6hIs', content: 'lowest deep tissue massages in NY' , price: 50 )
