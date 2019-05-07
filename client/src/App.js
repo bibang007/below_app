@@ -3,17 +3,17 @@ import { Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import decode from 'jwt-decode';
 
-import TeachersView from './components/TeachersView';
-import TeacherPage from './components/TeacherPage';
-import CreateTeacher from './components/CreateTeacher'
+import PostView from './components/PostView';
+import PostPage from './components/PostPage';
+import CreatePost from './components/CreatePost'
 import Login from './components/Login'
 import Register from './components/Register'
 
 import {
-  createTeacher,
-  readAllTeachers,
-  updateTeacher,
-  destroyTeacher,
+  createPost,
+  readAllPosts,
+  updatePost,
+  destroyPost,
   loginUser,
   registerUser
 } from './services/api-helper'
@@ -23,24 +23,30 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      teachers: [],
-      teacherForm: {
-        name: "",
-        photo: ""
+      posts: [],
+      postForm: {
+      name: "",
+      price: "",
+      category: "",
+      content:"",
+      image: ""
       },
       currentUser: null,
       authFormData: {
         username: "",
         email: "",
-        password: ""
+        password_digest: ""
       }
-    };
+     };
+
+
     this.handleFormChange = this.handleFormChange.bind(this)
     this.mountEditForm = this.mountEditForm.bind(this)
-    this.editTeacher = this.editTeacher.bind(this)
-    this.deleteTeacher = this.deleteTeacher.bind(this)
-    this.newTeacher = this.newTeacher.bind(this)
+    this.editPost = this.editPost.bind(this)
+    this.deletePost = this.deletePost.bind(this)
+    this.newPost = this.newPost.bind(this)
     this.handleLoginButton = this.handleLoginButton.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
     this.handleRegister = this.handleRegister.bind(this)
@@ -49,7 +55,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getTeachers();
+    this.getPosts();
     const checkUser = localStorage.getItem("jwt");
     if (checkUser) {
       const user = decode(checkUser);
@@ -59,57 +65,60 @@ class App extends Component {
     }
   }
 
-  async getTeachers() {
-    const teachers = await readAllTeachers();
+  async getPosts() {
+    const posts = await readAllPosts();
     this.setState({
-      teachers
+      posts
     })
   }
 
-  async newTeacher(e) {
+  async newPost(e) {
     e.preventDefault();
-    const teacher = await createTeacher(this.state.teacherForm);
+    const post = await createPost(this.state.postForm);
     this.setState(prevState => ({
-      teachers: [...prevState.teachers, teacher],
-      teacherForm: {
-        name: "",
-        photo: ""
+      posts: [...prevState.posts, post],
+      postForm: {
+      name: "",
+      price: "",
+      category: "",
+      content:"",
+      image: ""
       }
     }))
   }
 
-  async editTeacher() {
-    const { teacherForm } = this.state
-    await updateTeacher(teacherForm.id, teacherForm);
+  async editPost() {
+    const { postForm } = this.state
+    await updatePost(postForm.id, postForm);
     this.setState(prevState => (
       {
-        teachers: prevState.teachers.map(teacher => teacher.id === teacherForm.id ? teacherForm : teacher),
+        posts: prevState.posts.map(post => post.id === postForm.id ? postForm : post),
       }
     ))
   }
 
-  async deleteTeacher(id) {
-    await destroyTeacher(id);
+  async deletePost(id) {
+    await destroyPost(id);
     this.setState(prevState => ({
-      teachers: prevState.teachers.filter(teacher => teacher.id !== id)
+      posts: prevState.posts.filter(post => post.id !== id)
     }))
   }
 
   handleFormChange(e) {
     const { name, value } = e.target;
     this.setState(prevState => ({
-      teacherForm: {
-        ...prevState.teacherForm,
+      postForm: {
+        ...prevState.postForm,
         [name]: value
       }
     }))
   }
 
   async mountEditForm(id) {
-    const teachers = await readAllTeachers();
-    const teacher = teachers.find(el => el.id === parseInt(id));
+    const posts = await readAllPosts();
+    const post = posts.find(el => el.id === parseInt(id));
     this.setState({
-      teacherForm: teacher
+      postForm: post
     });
   }
 
@@ -155,11 +164,14 @@ class App extends Component {
       <div className="App">
         <header>
           <h1><Link to='/' onClick={() => this.setState({
-            teacherForm: {
+            postForm: {
               name: "",
-              photo: ""
-            }
-          })}>School App</Link></h1>
+              price: "",
+              category: "",
+              content:"",
+              image: ""
+              }
+          })}>Below App</Link></h1>
           <div>
           {this.state.currentUser
             ?
@@ -185,34 +197,34 @@ class App extends Component {
         <Route
           exact path="/"
           render={() => (
-            <TeachersView
-              teachers={this.state.teachers}
-              teacherForm={this.state.teacherForm}
+            <PostView
+              posts={this.state.posts}
+              postForm={this.state.PostForm}
               handleFormChange={this.handleFormChange}
-              newTeacher={this.newTeacher} />
+              newPost={this.newPost} />
           )}
         />
         <Route
-          path="/new/teacher"
+          path="/new/post"
           render={() => (
-            <CreateTeacher
+            <CreatePost
               handleFormChange={this.handleFormChange}
-              teacherForm={this.state.teacherForm}
-              newTeacher={this.newTeacher} />
+              PostForm={this.state.postForm}
+              newPost={this.newPost} />
           )} />
         <Route
-          path="/teachers/:id"
+          path="/posts/:id"
           render={(props) => {
             const { id } = props.match.params;
-            const teacher = this.state.teachers.find(el => el.id === parseInt(id));
-            return <TeacherPage
+            const post = this.state.posts.find(el => el.id === parseInt(id));
+            return <PostPage
               id={id}
-              teacher={teacher}
+              post={post}
               handleFormChange={this.handleFormChange}
               mountEditForm={this.mountEditForm}
-              editTeacher={this.editTeacher}
-              teacherForm={this.state.teacherForm}
-              deleteTeacher={this.deleteTeacher} />
+              editTeacher={this.editPost}
+              postForm={this.state.postForm}
+              deletePost={this.deletePost} />
           }}
         />
       </div>
