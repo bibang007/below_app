@@ -37,3 +37,4 @@ ActiveRecord::Schema.define(version: 2019_05_06_145433) do
 
   add_foreign_key "posts", "users"
 end
+
