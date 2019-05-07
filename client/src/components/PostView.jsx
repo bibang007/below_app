@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 function PostView(props) {
   return (
     <div className="post-container">
-      {props.post.map(post => (
+      {props.posts.map(post => (
         <div
           key={post.id}
           className="post-card"
