@@ -31,7 +31,8 @@ class App extends Component {
       price: "",
       category: "",
       content:"",
-      image: ""
+      image: "",
+      contact: ""
       },
       currentUser: null,
       authFormData: {
@@ -82,7 +83,8 @@ class App extends Component {
       price: "",
       category: "",
       content:"",
-      image: ""
+      image: "",
+      contact: "",
       }
     }))
     this.props.history.push('/')
@@ -171,7 +173,8 @@ class App extends Component {
               price: "",
               category: "",
               content:"",
-              image: ""
+              image: "",
+              contact: ""
               }
           })}>Below App</Link></h1>
           <div>
