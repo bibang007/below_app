@@ -204,6 +204,7 @@ class App extends Component {
           render={() => (
             <PostView
               posts={this.state.posts}
+              currentUser={this.state.currentUser}
               postForm={this.state.PostForm}
               handleFormChange={this.handleFormChange}
               newPost={this.newPost} />
@@ -225,6 +226,7 @@ class App extends Component {
             return <PostPage
               id={id}
               post={post}
+              currentUser={this.state.currentUser}
               handleFormChange={this.handleFormChange}
               mountEditForm={this.mountEditForm}
               editPost={this.editPost}
