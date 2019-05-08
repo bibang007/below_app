@@ -18,7 +18,7 @@ handleChange(e){
     render() {
         return (
           <div className="post-container">
-          <input onChange={this.handleChange} value={this.state.inputValue} type='search'/>
+          <input onChange={this.handleChange} value={this.state.inputValue} type='search' placeholder="Search"/>
          
             {this.props.posts && this.props.posts.filter(post => post.name.toUpperCase().includes(this.state.inputValue.toUpperCase())).map(post => (
               <div
