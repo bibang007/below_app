@@ -21,17 +21,17 @@ function CreatePost(props) {
                     value={props.postForm.name}
                     onChange={props.handleFormChange} />
 
-                <input
+                <input 
                     type="text"
                     name="category"
-                    placeholder="BOOTSTRAP HERE"
+                    placeholder="DROPDOWN HERE"
                     value={props.postForm.category}
                     onChange={props.handleFormChange} />
 
                 <input
                     type="text"
                     name="price"
-                    placeholder="BOOTSTRAP HERE"
+                    placeholder="DROPDOWN HERE"
                     value={props.postForm.price}
                     onChange={props.handleFormChange} />
 
