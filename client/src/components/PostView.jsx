@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 function PostView(props) {
   return (
     <div className="post-container">
-      {props.posts.map(post => (
+      {props.posts && props.posts.map(post => (
         <div
           key={post.id}
           className="post-card"
@@ -29,7 +29,7 @@ function PostView(props) {
           alt="Create a post"
           src="https://image.flaticon.com/icons/png/512/14/14980.png"
           className="plus-sign" />
-        <h3>Create a new teacher</h3>
+        <h3>Create a new post</h3>
       </div>
     </div>
   )

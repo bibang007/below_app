@@ -74,7 +74,7 @@ class App extends Component {
 
   async newPost(e) {
     e.preventDefault();
-    const post = await createPost(this.state.postForm);
+    const post = await createPost(this.state.postForm);    
     this.setState(prevState => ({
       posts: [...prevState.posts, post],
       postForm: {
@@ -85,6 +85,7 @@ class App extends Component {
       image: ""
       }
     }))
+    this.props.history.push('/')
   }
 
   async editPost() {
@@ -129,11 +130,12 @@ class App extends Component {
   }
 
   async handleLogin() {
-    const userData = await loginUser(this.state.authFormData);
+    const token = await loginUser(this.state.authFormData);
+    const userData = decode(token.token)
     this.setState({
-      currentUser: decode(userData.token)
+      currentUser: userData
     })
-    localStorage.setItem("jwt", userData.token)
+    localStorage.setItem("jwt", token.token)
   }
 
   async handleRegister(e) {
@@ -209,7 +211,7 @@ class App extends Component {
           render={() => (
             <CreatePost
               handleFormChange={this.handleFormChange}
-              PostForm={this.state.postForm}
+              postForm={this.state.postForm}
               newPost={this.newPost} />
           )} />
         <Route
@@ -222,7 +224,7 @@ class App extends Component {
               post={post}
               handleFormChange={this.handleFormChange}
               mountEditForm={this.mountEditForm}
-              editTeacher={this.editPost}
+              editPost={this.editPost}
               postForm={this.state.postForm}
               deletePost={this.deletePost} />
           }}

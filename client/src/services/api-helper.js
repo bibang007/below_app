@@ -26,12 +26,13 @@ export const registerUser = (registerData) => {
     .then(resp => resp.json())
 }
 
-const createPost = (data) => {
+const createPost = (data) => {  
   const opts = {
     method: 'POST',
     body: JSON.stringify({ post: data }),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
     }
   }
   return fetch(`${baseUrl}/posts`, opts)

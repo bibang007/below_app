@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
-  before_action :authenticate_user, only: %i[create update destroy]
+  before_action :authorize_request, only: %i[create update destroy]
 
   # GET /posts
   def index
@@ -16,9 +16,9 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    
     @post = Post.new(post_params)
-
-    if @post.save
+    if @current_user.posts << @post
       render json: @post, status: :created, location: @post
     else
       render json: @post.errors, status: :unprocessable_entity
@@ -47,6 +47,6 @@ class PostsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:post).permit(:name, :price, :category, :content, :image, :user_id)
+      params.require(:post).permit(:name, :price, :category, :content, :image)
     end
 end
