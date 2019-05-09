@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2019_05_06_145433) do
     t.string "category"
     t.text "content"
     t.text "image"
-    t.text "contact"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -38,4 +37,3 @@ ActiveRecord::Schema.define(version: 2019_05_06_145433) do
 
   add_foreign_key "posts", "users"
 end
-

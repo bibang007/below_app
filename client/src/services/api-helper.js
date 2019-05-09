@@ -1,6 +1,6 @@
 const baseUrl =
-// 'postgres://wmiotevqexadpe:8a0507358e99f4c7bf46f37b399a7b675df5ba75fef60ac13d9cd621e2583132@ec2-54-225-129-101.compute-1.amazonaws.com:5432/d86j4dbattmefb'
-'http://localhost:3000'
+'postgres://icszgphfgogafs:4bd11b621ac82804ca1112f657a28f6e321a0dcd44a36ed3225e82426cdf934d@ec2-54-235-208-103.compute-1.amazonaws.com:5432/dbbj52liqtubm5'
+// 'http://localhost:3000'
 
 export const loginUser = (loginData) => {
   const opts = {
