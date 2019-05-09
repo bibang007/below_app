@@ -75,9 +75,10 @@ class App extends Component {
   }
 
   async newPost(e) {
+    console.log('newPost running')
     e.preventDefault();
     console.log("Post Form: ",this.state.postForm)
-    const post = await createPost(this.state.postForm);    
+    const post = await createPost(this.state.postForm);   
     this.setState(prevState => ({
       posts: [...prevState.posts, post],
       postForm: {
@@ -130,7 +131,8 @@ class App extends Component {
   // -------------- AUTH ------------------
 
   handleLoginButton() {
-    this.props.history.push("/login")
+    console.log('redirecting')
+    this.props.history.push("/")
   }
 
   async handleLogin() {
@@ -140,6 +142,7 @@ class App extends Component {
       currentUser: userData
     })
     localStorage.setItem("jwt", token.token)
+    this.props.history.push("/")
   }
 
   async handleRegister(e) {

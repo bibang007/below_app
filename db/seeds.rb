@@ -9,7 +9,7 @@
 Post.create!(category: 'services', name: 'Ding massages', image:'https://i.imgur.com/hiak1WG.jpg?1', content: 'lowest deep tissue massages in NY' , price: 50 )
 Post.create!(category: 'Real Estate', name: '1 bedroom to rent in Astoria', image:'https://i.imgur.com/0Z6035s.jpg', content: 'Beautiful room in a 2 bedroom apartment with private bathroom' , price: 850 )
 Post.create!(category: 'Real Estate', name: '1 bedroom to rent in Astoria', image:'https://i.imgur.com/0Z6035s.jpg', content: 'Beautiful room in a 2 bedroom apartment with private bathroom' , price: 850 )
-Post.create!(category: 'services', name: 'Ding massages', image:'https://i.imgur.com/hiak1WG.jpg?1', content: 'lowest deep tissue massages in NY' , price: 50 )
+Post.create!(category: 'services', name: 'Dong massages', image:'https://i.imgur.com/hiak1WG.jpg?1', content: 'lowest price massages in NY' , price: 50 )
 
 
 
