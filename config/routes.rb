@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
+  root 'posts#index'
   post '/auth/login', to: 'authentication#login'
-  # post 'user_token' => 'user_token#create'
-  # resources :users
   
   resources :posts
   resources :users do
