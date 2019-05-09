@@ -9,6 +9,7 @@ import CreatePost from './components/CreatePost'
 import Login from './components/Login'
 import Register from './components/Register'
 
+
 import {
   createPost,
   readAllPosts,
@@ -75,6 +76,7 @@ class App extends Component {
 
   async newPost(e) {
     e.preventDefault();
+    console.log("Post Form: ",this.state.postForm)
     const post = await createPost(this.state.postForm);    
     this.setState(prevState => ({
       posts: [...prevState.posts, post],
@@ -216,7 +218,9 @@ class App extends Component {
             <CreatePost
               handleFormChange={this.handleFormChange}
               postForm={this.state.postForm}
-              newPost={this.newPost} />
+              newPost={this.newPost}
+             
+               />
           )} />
         <Route
           path="/posts/:id"

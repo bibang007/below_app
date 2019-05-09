@@ -1,4 +1,4 @@
-const baseUrl = 'https://aqueous-garden-66725.herokuapp.com/'
+const baseUrl = 'https://aqueous-garden-66725.herokuapp.com'
 
 export const loginUser = (loginData) => {
   const opts = {
