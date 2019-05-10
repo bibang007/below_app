@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root '/'
+  root 'posts#index'
   post '/auth/login', to: 'authentication#login'
   
   resources :posts

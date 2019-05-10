@@ -8,6 +8,7 @@ import PostPage from './components/PostPage';
 import CreatePost from './components/CreatePost'
 import Login from './components/Login'
 import Register from './components/Register'
+import logo from '../src/images/belowbonbonlogo.png'
 
 
 import {
@@ -33,7 +34,7 @@ class App extends Component {
       category: "",
       content:"",
       image: "",
-      contact: ""
+      // contact: ""
       },
       currentUser: null,
       authFormData: {
@@ -87,7 +88,7 @@ class App extends Component {
       category: "",
       content:"",
       image: "",
-      contact: "",
+      // contact: "",
       }
     }))
     this.props.history.push('/')
@@ -104,10 +105,15 @@ class App extends Component {
   }
 
   async deletePost(id) {
+    console.log('calling deletePost')
+    console.log('deleting id: ', id)
     await destroyPost(id);
-    this.setState(prevState => ({
-      posts: prevState.posts.filter(post => post.id !== id)
-    }))
+    console.log('getting posts')
+    this.getPosts();
+    console.log('done')
+    // this.setState(prevState => ({
+    //   posts: prevState.posts.filter(post => post.id !== id)
+    // }))
   }
 
   handleFormChange(e) {
@@ -131,8 +137,7 @@ class App extends Component {
   // -------------- AUTH ------------------
 
   handleLoginButton() {
-    console.log('redirecting')
-    this.props.history.push("/")
+    this.props.history.push("/login")
   }
 
   async handleLogin() {
@@ -142,7 +147,7 @@ class App extends Component {
       currentUser: userData
     })
     localStorage.setItem("jwt", token.token)
-    this.props.history.push("/")
+    this.props.history.push("/login")
   }
 
   async handleRegister(e) {
@@ -172,6 +177,7 @@ class App extends Component {
     return (
       <div className="App">
         <header>
+        <img className="logo" src={logo} />
           <h1><Link to='/' onClick={() => this.setState({
             postForm: {
               name: "",
@@ -179,9 +185,9 @@ class App extends Component {
               category: "",
               content:"",
               image: "",
-              contact: ""
+              // contact: ""
               }
-          })}>Below App</Link></h1>
+          })}>Menu</Link></h1>
           <div>
           {this.state.currentUser
             ?

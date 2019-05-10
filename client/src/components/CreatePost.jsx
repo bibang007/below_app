@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 function CreatePost(props) {
     return (
+        <div>
         <div className="create-form" >
             <h2>Create a new post</h2>
             <form onSubmit={props.newPost}>
@@ -42,16 +43,17 @@ function CreatePost(props) {
                     value={props.postForm.content}
                     onChange={props.handleFormChange} />
 
-                <input
+                {/* <input
                     type="text"
                     name="contact"
                     placeholder="Enter email"
                     value={props.postForm.contact}
-                    onChange={props.handleFormChange} />    
+                    onChange={props.handleFormChange} />     */}
 
                 <button>Submit</button>
             </form>
         </div >
+        </div>
     )
 }
 

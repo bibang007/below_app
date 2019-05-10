@@ -19,8 +19,10 @@ handleChange(e){
         return (
           <div className="post-container">
           <input onChange={this.handleChange} value={this.state.inputValue} type='search' placeholder="Search"/>
-         
-            {this.props.posts && this.props.posts.filter(post => post.name.toUpperCase().includes(this.state.inputValue.toUpperCase())).map(post => (
+            {this.props.posts && this.props.posts.filter(post => {
+                // debugger;
+                return post.name.toUpperCase().includes(this.state.inputValue.toUpperCase())
+            }).map(post => (
               <div
                 key={post.id}
                 className="post-card"
@@ -28,10 +30,23 @@ handleChange(e){
                     this.props.history.push(`/posts/${post.id}`)
                     window.scrollTo(0, 0);
                 }}>
-                <img alt={post.name} src={post.image} />
+                <img className='testImage'alt={post.name} src={post.image} />
                 <h3>
                   <p>{post.name}</p>
                 </h3>
+                <h3>
+                  {post.category}
+                    </h3>
+                <h3>
+                    {post.price}
+
+                </h3>
+                <h3>
+                    {post.content}
+                </h3>
+                {/* <h3>
+                    {post.contact}    
+                </h3> */}
               </div>
             ))}
             <div
@@ -44,7 +59,6 @@ handleChange(e){
                 alt="Create a post"
                 src="https://image.flaticon.com/icons/png/512/14/14980.png"
                 className="plus-sign" />
-              <h3>Create a new post</h3>
             </div>
           </div>
         )

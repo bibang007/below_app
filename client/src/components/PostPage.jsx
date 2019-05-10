@@ -38,13 +38,13 @@ class PostView extends Component {
               <>
                 <h1>{post.name}</h1>
                 {this.props.currentUser && (<>
-                <button onClick={() => {
+                <button className='editButton' onClick={() => {
                   this.setState({
                     isEdit: true
                   })
                   this.props.history.push(`/posts/${post.id}/edit`)
                 }}>Edit</button>
-                <button onClick={() => {
+                <button className='deleteButton' onClick={() => {
                   this.props.deletePost(post.id);
                   this.props.history.push('/')
                 }}>Delete</button>
