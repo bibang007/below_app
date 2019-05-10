@@ -1,6 +1,10 @@
+
+
 .App {
   text-align: center;
   background-image: linear-gradient(to right top, #242020, #454041, #676267, #8a888f, #adb0b8, #abb0bb, #a9afbf, #a6afc2, #89839d, #725873, #5b2f43, #3d0713);
+  height: 100vh;
+  overflow: scroll; 
 }
 
 .auth-container{
@@ -9,12 +13,16 @@
   flex-basis: row;
 }
 
+.logo-container {
+  order: 2;
+}
+
 .logo {
   height: 100px;
   }
 
 .plus-sign {
-  height: 75px;
+  height: 25px;
 }
 
 .post-container {
@@ -22,10 +30,31 @@
   flex-direction: column;
 }
 
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.posts {
+  display: flex;
+  font-family: fantasy;
+}
+
+.posts img {
+  width: 200px;
+  height: 150px;
+}
+
 .post-card {
-  background: white;
-  width: 50%;
- justify-content: center;
+  order: 3;
+  display: flex;
+  justify-content: center;
+}
+
+.description {
+  font-size: 13px;
+  width: 250px;
 }
 
 .form {
@@ -34,3 +63,36 @@
 
 }
 
+.search-field {
+  width: 50%;
+  margin: 0 auto;
+  opacity: .5;
+  outline-color: #e033e8;
+  background: #705570;
+}
+
+.loggedUser {
+  font-family: fantasy;
+}
+
+.logout-sign {
+  width: 25px;
+}
+
+.editButton{
+  width:25px;
+}
+
+.deleteButton{
+  width:25px;
+}
+
+.imagePost {
+  height: 212px;
+    width: 299px;
+}
+
+.postButton {
+    display: flex;
+    justify-content: space-around;
+}

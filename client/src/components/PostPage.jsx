@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import EditPost from './EditPost'
 import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import deleteButton from '../../src/images/delete.png' 
+import editButton from '../../src/images/editButton.png' 
 
 class PostView extends Component {
   constructor(props) {
@@ -21,7 +23,7 @@ class PostView extends Component {
       <div className="post-page">
         {post === undefined ? <h2>Loading . . .</h2> : (
           <div>
-            <img alt={post.name} src={post.image} />
+            <img className="imagePost" alt={post.name} src={post.image} />
             {this.state.isEdit ?
               <Route path={'/posts/:id/edit'} render={() => (
                 <EditPost
@@ -37,19 +39,32 @@ class PostView extends Component {
               :
               <>
                 <h1>{post.name}</h1>
+                <h3>
+                        {post.category}
+                            </h3>
+                        <h3>
+                            {post.price}
+
+                        </h3>
+                        <h3>
+                            {post.content}
+                        </h3>
                 {this.props.currentUser && (<>
-                <button className='editButton' onClick={() => {
+                <div className='postButton'>
+                <div className='editButton' onClick={() => {
                   this.setState({
                     isEdit: true
                   })
                   this.props.history.push(`/posts/${post.id}/edit`)
-                }}>Edit</button>
-                <button className='deleteButton' onClick={() => {
+                }}><img className="editButton" src={editButton} /></div>
+                <div className='deleteButton' onClick={() => {
                   this.props.deletePost(post.id);
                   this.props.history.push('/')
-                }}>Delete</button>
+                }}><img className="deleteButton" src={deleteButton} /></div>
+                </div>
                 </>)}
               </>
+              
             }
           </div>)}
       </div>)

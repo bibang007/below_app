@@ -33,8 +33,7 @@ class App extends Component {
       price: "",
       category: "",
       content:"",
-      image: "",
-      // contact: ""
+      image: ""
       },
       currentUser: null,
       authFormData: {
@@ -87,11 +86,10 @@ class App extends Component {
       price: "",
       category: "",
       content:"",
-      image: "",
-      // contact: "",
+      image: ""
       }
     }))
-    this.props.history.push('/')
+    this.props.history.push('/posts')
   }
 
   async editPost() {
@@ -177,8 +175,9 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-        <img className="logo" src={logo} />
-          <h1><Link to='/' onClick={() => this.setState({
+        {/* <img className="logo" src={logo} /> */}
+          <h1 className="logo-container"><Link to='/posts' onClick={() => {
+          this.setState({
             postForm: {
               name: "",
               price: "",
@@ -187,13 +186,28 @@ class App extends Component {
               image: "",
               // contact: ""
               }
-          })}>Menu</Link></h1>
+          })
+          }}> <img className="logo" src={logo} /></Link></h1>
+           <div
+              className="post-card"
+              onClick={() => {
+                this.props.history.push('/new/post');
+                window.scrollTo(0, 0);
+              }}>
+              <img
+                alt="Create a post"
+                src="https://image.flaticon.com/icons/png/512/14/14980.png"
+                className="plus-sign" />
+            </div>
           <div>
           {this.state.currentUser
             ?
             <>
-              <p>{this.state.currentUser.username}</p>
-              <button onClick={this.handleLogout}>logout</button>
+              <p className='loggedUser'>{this.state.currentUser.username}</p>
+              <div onClick={this.handleLogout}><img
+                alt="Create a post"
+                src="http://www.clker.com/cliparts/7/6/0/d/11949892261770556543led_circle_black.svg.med.png"
+                className="logout-sign" /></div>
             </>
             :
             <button onClick={this.handleLoginButton}>Login/register</button>
@@ -211,7 +225,7 @@ class App extends Component {
             handleChange={this.authHandleChange}
             formData={this.state.authFormData} />)} />
         <Route
-          exact path="/"
+          exact path="/posts"
           render={() => (
             <PostView
               posts={this.state.posts}

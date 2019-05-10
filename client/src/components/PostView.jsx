@@ -18,7 +18,7 @@ handleChange(e){
     render() {
         return (
           <div className="post-container">
-          <input onChange={this.handleChange} value={this.state.inputValue} type='search' placeholder="Search"/>
+          <input className="search-field" onChange={this.handleChange} value={this.state.inputValue} type='search' placeholder="Search"/>
             {this.props.posts && this.props.posts.filter(post => {
                 // debugger;
                 return post.name.toUpperCase().includes(this.state.inputValue.toUpperCase())
@@ -30,26 +30,30 @@ handleChange(e){
                     this.props.history.push(`/posts/${post.id}`)
                     window.scrollTo(0, 0);
                 }}>
-                <img className='testImage'alt={post.name} src={post.image} />
-                <h3>
-                  <p>{post.name}</p>
-                </h3>
-                <h3>
-                  {post.category}
-                    </h3>
-                <h3>
-                    {post.price}
+                <div className="posts">
+                    <img className='testImage'alt={post.name} src={post.image} />
+                    <div className="description">
+                        <h3>
+                        <p>{post.name}</p>
+                        </h3>
+                        <h3>
+                        {post.category}
+                            </h3>
+                        <h3>
+                            {post.price}
 
-                </h3>
-                <h3>
-                    {post.content}
-                </h3>
-                {/* <h3>
-                    {post.contact}    
-                </h3> */}
+                        </h3>
+                        <h3>
+                            {post.content}
+                        </h3>
+                        {/* <h3>
+                            {post.contact}    
+                        </h3> */}
+                    </div>
+                </div>
               </div>
             ))}
-            <div
+            {/* <div
               className="post-card"
               onClick={() => {
                 this.props.history.push('/new/post');
@@ -59,7 +63,7 @@ handleChange(e){
                 alt="Create a post"
                 src="https://image.flaticon.com/icons/png/512/14/14980.png"
                 className="plus-sign" />
-            </div>
+            </div> */}
           </div>
         )
     }

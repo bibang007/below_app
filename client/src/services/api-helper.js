@@ -1,6 +1,6 @@
-const baseUrl =
+const baseUrl = "https://below-app.herokuapp.com"
 // 'postgres://icszgphfgogafs:4bd11b621ac82804ca1112f657a28f6e321a0dcd44a36ed3225e82426cdf934d@ec2-54-235-208-103.compute-1.amazonaws.com:5432/dbbj52liqtubm5'
-'http://localhost:3000'
+// 'http://localhost:3000'
 
 export const loginUser = (loginData) => {
   const opts = {
@@ -38,12 +38,12 @@ const createPost = (data) => {
     }
   }
   return fetch(`${baseUrl}/posts`, opts)
-    .then(resp => resp.json())
+  .then(resp => resp.json())
 }
 
 const readAllPosts = () => {
   return fetch(`${baseUrl}/posts`)
-    .then(resp => resp.json())
+  .then(resp => resp.json())
 }
 
 const updatePost = (id, data) => {
@@ -51,16 +51,20 @@ const updatePost = (id, data) => {
     method: 'PUT',
     body: JSON.stringify({ post: data }),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
     }
   }
   return fetch(`${baseUrl}/posts/${id}`, opts)
-    .then(resp => resp.json())
+  .then(resp => resp.json())
 }
 
 const destroyPost = (id) => {
   const opts = {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+    }
   }
   return fetch(`${baseUrl}/posts/${id}`, opts)
 }
