@@ -7,7 +7,7 @@ const Login = (props) => {
 
   return (
     <div className="auth-container">
-      <h2>login</h2>
+      {/* <h2>login</h2> */}
       <hr />
       <form onSubmit={(e) => {
         e.preventDefault();

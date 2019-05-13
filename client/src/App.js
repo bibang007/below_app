@@ -145,13 +145,14 @@ class App extends Component {
       currentUser: userData
     })
     localStorage.setItem("jwt", token.token)
-    this.props.history.push("/login")
+    this.props.history.push("/")
   }
 
   async handleRegister(e) {
     e.preventDefault();
     await registerUser(this.state.authFormData);
     this.handleLogin();
+    this.props.history.push('/')
   }
 
   handleLogout() {

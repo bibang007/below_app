@@ -8,9 +8,10 @@
 }
 
 .auth-container{
-  display: flex;
-  flex-flow: nowrap;
-  flex-basis: row;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 166px;
+    padding-right: 50px;
 }
 
 .logo-container {

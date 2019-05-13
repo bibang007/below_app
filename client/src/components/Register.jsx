@@ -5,7 +5,7 @@ const Register = (props) => {
 
   return (
     <div className="auth-container">
-      <h2>Register</h2>
+      {/* <h2>Register</h2> */}
       <hr />
       <form onSubmit={props.handleRegister} >
         <p>Username:</p>

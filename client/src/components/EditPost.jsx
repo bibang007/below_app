@@ -33,18 +33,18 @@ function EditPost(props) {
 
                     <select name="price" onChange={props.handleFormChange}>
                         <option defaultValue>Price</option>
-                        <option value="5000">$5000</option>
-                        <option value="500">$500</option>
-                        <option value="100">$100</option>
-                        <option value="50">$50</option>
-                        <option value="10">$10</option>
+                        <option value="$5000">$5000</option>
+                        <option value="$500">$500</option>
+                        <option value="$100">$100</option>
+                        <option value="$50">$50</option>
+                        <option value="$10">$10</option>
                     </select>
 
                     <select name="content" onChange={props.handleFormChange}>
                         <option defaultValue>Description</option>
                         <option value="New">New</option>
                         <option value="Great Condition">Great Condition</option>
-                        <option value="Good">Good</option>
+                        <option value="Good">Good Condition</option>
                         <option value="Fair">Fair</option>
                     </select>
 
